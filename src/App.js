@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import './index.css'
+import {BrowserRouter, Route, Routes, Router} from "react-router-dom"
+import {LoginForm} from "./components/Forms/LoginForm";
+import {RegistrationForm} from "./components/Forms/RegistrationForm";
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
+import Feed from "./components/Pages/Feed";
+import PostPage from "./components/Pages/PostPage";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+    const id = 1;
+
+    return (
+        <BrowserRouter>
+            <div className='flex flex-col'>
+                <Header/>
+                <main className='bg-gray-700 h-screen'>
+                    <div className='h-auto'>
+                        <Routes>
+                            <Route path={'/login'} element={<LoginForm/>}/>
+                            <Route path={'/register'} element={<RegistrationForm/>}/>
+                            <Route path={'/'} element={<Feed/>}/>
+                            <Route path={'/posts/:id'} element={<PostPage/>}/>
+                        </Routes>
+                    </div>
+                </main>
+                <Footer/>
+            </div>
+        </BrowserRouter>
+    );
 }
 
 export default App;

@@ -1,22 +1,22 @@
-import {createAsynThunk, createSlice} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import axios from '../../axios';
 
-export const fetchAuth = createAsynThunk('auth/fetchAuth', async (params) => {
+export const fetchAuth = createAsyncThunk('auth/fetchAuth', async (params) => {
     const {data} = await axios.post('/auth/login', params);
     return data;
 });
 
-export const fetchAuthMe = createAsynThunk('auth/fetchAuth', async () => {
+export const fetchAuthMe = createAsyncThunk('auth/fetchAuth', async () => {
     const {data} = await  axios.get('/auth/me');
     return data;
 });
 
-export const fetchRegister = createAsynThunk('auth/fetchRegister', async (params) => {
+export const fetchRegister = createAsyncThunk('auth/fetchRegister', async (params) => {
     const {data} = await axios.post('/auth/register', params);
     return data;
 });
 
-export const fetchVerify = createAsynThunk('auth/fetchVerify', async (params) => {
+export const fetchVerify = createAsyncThunk('auth/fetchVerify', async (params) => {
     const {data} = await axios.post('/auth/verify', params);
     return data;
 });
