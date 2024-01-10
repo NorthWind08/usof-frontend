@@ -4,6 +4,7 @@ import axios from "../../axios";
 export const fetchCreateComment = createAsyncThunk(
     'comment/fetchCreateComment',
     async (params) => {
+        console.log(params);
         const {id, ...body} = params;
         const {data} = axios.post(`/posts/${id}/comments`, body);
         return data;

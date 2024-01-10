@@ -3,8 +3,9 @@ import axios from "../../axios";
 
 export const fetchPosts = createAsyncThunk(
     'posts/fetchPosts',
-    async () => {
-        const {data} = await axios.get('posts/');
+    async (params) => {
+        console.log(params)
+        const {data} = await axios.get('/posts/', params);
         return data;
     });
 
@@ -21,7 +22,7 @@ const postsSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder.addCase(fetchPosts.fulfilled, (state, action) => {
-            state.posts.data = action.payload;
+            state.data = action.payload;
             state.status = 'loaded';
         });
     }
